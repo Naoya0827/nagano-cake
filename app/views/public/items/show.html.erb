@@ -1,0 +1,40 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-3 mt-4">
+      <%= render 'public/items/sidebar', genre: @genres %>
+    </div>
+
+    <div class="col-9 my-3">
+      <div class="row">
+
+        <div class="col-5">
+          <%= attachment_image_tag @item, :image, size: '50x50', format: "jpeg", fallback: 'noimage.jpg', size: '300x300', class:"rounded" %>
+        </div>
+
+        <div class="col-5">
+          <div class="row">
+            <h4 class=""><%= @item.name %></h4>
+          </div>
+
+          <div class="row mt-3">
+            <p class=""><%= @item.introducution %></p>
+          </div>
+
+          <div class="row">
+            <strong class=""><%= (@item.price * 1.1).floor %>円 （税込）</strong>
+          </div>
+
+          <div class="row">
+            <%= form_with model:@cart_item, url:'/cart_items', local:true do |f| %>
+             <%= hidden_field :item_id, value: => @item.id %>
+             <%= f.select :amount, *[1..10], placeholder: "個数選択" %>
+             <%= f.submit "カートに入れる", class:"btn btn" %>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

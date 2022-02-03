@@ -1,0 +1,46 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/items/sidebar', genres: @genres %>
+    </div>
+
+    <div class="col-9">
+
+      <div class="row">
+        <h2 class="">
+          <% if params[:genre_id] %>
+           <%= @genre.name %>
+          <% else %>
+           商品一覧<h3>（全<%= @items_all.count %>件）</h3>
+          <% end %>
+        </h2>
+      </div>
+
+      <div class="row">
+        <% @items.each do |item| %>
+        <div class="col-3 mt-3">
+          <%= link_to item_path(item) do %>
+           <%= attachment_image_tag item, :image, size: "150x150", format: 'jpeg', fallback: "noimage.jpg", class:'rounded' %>
+          <% end %><br>
+          <span class="text-muted"><%= link_to item.genre.name, genre_items_path(item.genre_id) %></span><br>
+          <strong class=""><%= item.name %></strong><br>
+          <span class=""><%= (item.price * 1.1).floor %></span><br>
+        </div>
+        <% end %>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <dic class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4 py-2 mt-5">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </dic>
+
+
+</div>

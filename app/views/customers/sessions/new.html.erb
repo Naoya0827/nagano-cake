@@ -1,0 +1,47 @@
+<div class="container my-5">
+
+  <div class="row">
+    <h2 class="offset-2">
+      <strong class="">ログイン</strong>
+    </h2>
+  </div>
+
+  <div class="row">
+    <div class="offset-3">
+      <strong class="">会員の方はこちらからログイン</strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-4 col-4">
+      <%= form_with model:@customer, url: customer_session_path, lpcal: true do |f| %>
+       <div class="form-group mt-3">
+         <%= f.label :メールアドレス, class:"" %>
+         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class:"form-control offset-1 col-10" %>
+       </div>
+
+       <div class="form-group mt-3">
+         <%= f.label :パスワード, class:"" %>
+         <%= f.password_field :password, autocomplete: "encrypted_password", class:"form-control offset-1 col-10" %>
+       </div>
+
+       <div class="offset-2 col-8">
+         <%= f.submit "ログイン", class:"btn btn-outline-danger btn-block mt-5" %>
+       </div>
+
+  <div class="row">
+    <div class="offset-3 mt-5">
+      <strong class="">会員登録がお済みでない方</strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-4 mx-auto mt-5">
+      <%= link_to "こちら", new_registration_path(resouce_name), class:"btn btn-outline-danger" %>から新規登録を行なってください。
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+</div>

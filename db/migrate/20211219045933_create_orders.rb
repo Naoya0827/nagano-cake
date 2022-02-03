@@ -14,6 +14,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.datetime :updated_at
 
       t.timestamps
+      enum payment_method: { credit_card: 0, transfer: 1 }
     end
   end
 end
